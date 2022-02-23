@@ -1,0 +1,32 @@
+.header-anchor {
+  color: grey !important;
+  text-decoration: none !important;
+}
+
+.visually-hidden {
+  position: absolute;
+  top: auto;
+  left: -9999rem;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* a:focus {
+  outline: 2px solid white;
+  border-radius: 5px;
+} */
+
+.navitem:hover {
+  border-radius: 5px;
+}
+
+.btnFocusWhite:focus {
+  outline: 2px dotted white;
+  outline-offset: 2px;
+}
+
+.btnFocusBlack:focus {
+  outline: 2px dotted black;
+  outline-offset: 2px;
+}

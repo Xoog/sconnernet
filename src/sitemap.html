@@ -1,0 +1,30 @@
+---
+layout: default
+title: Sitemap
+tags: content
+---
+
+
+<div class="py-4">
+
+  <h2 class="text-2xl py-5">Blog posts</h2>
+  <ul>
+    {% for post in collections.posts %}
+
+    <li><a href="{{ site.url }}{{ post.url | url }}">{{ post.data.title }}</a></li>
+    <!-- <lastmod>{{ page.date }}</lastmod>
+        <changefreq>
+          {{page.data.changeFreq}}</changefreq> -->
+    {% endfor %}
+  </ul>
+
+  <h2 class="text-2xl py-5">Pages</h2>
+  <ul>
+    {% for page in collections.content %}
+
+    <li><a href="{{ site.url }}{{ page.url | url }}">{{ page.data.title }} last modified on {{ page.date | date:
+        "%Y-%m-%d" }}</a></li>
+
+    {% endfor %}
+  </ul>
+</div>

@@ -1,0 +1,36 @@
+---
+layout: default
+title: Blog
+navtitle: Blog
+tags: 
+- content
+- navitem
+pagination:
+  data: collections.blog
+  size: 10
+  reverse: true
+  alias: blog
+---
+<div class="mt-10">
+{% for post in pagination.items %}
+{% if post.data.published %}
+<article class="py-4">
+  <h2 class="mb-3 text-xl sm:text-4xl font-bold">
+  {{ post.data.title }}
+  </h2>
+  <img src="{{ post.data.thumb }}" alt="Some alt text">
+  <p class="dark:text-gray-400">Published: {{ post.date | date: "%d-%m-%Y" }}</p>
+  <p class="pb-4 dark:text-gray-400">Read time: {{ post.templateContent | readTime }} minutes</p>
+  <p class="mt-4 text-xl">{{ post.data.post_excerpt }}...</p>
+  
+  <div class="mt-4 py-5 border-b-2 border-gray-800 ">
+    <a class="py-2 font-semibold text-2xl mb-10" href="{{ post.url }}">Read the full article</a>
+  </div>
+
+</article>
+
+{% endif %}
+{% endfor %}
+</div>
+
+{% include 'paginator' %}

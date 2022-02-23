@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    a {
+        @apply text-pink-700;
+        text-decoration: underline;
+    }
+    a:hover {
+        text-decoration: underline;
+        background-color: black;
+        color: white;
+    }
+    a:focus {
+        box-shadow: 0 -2px #Bf125D, 0 4px #000;
+        outline: none;
+        background-color: #Bf125D;
+        text-decoration: none;
+        color: white;
+    }
+}
+
+.noUnderline {
+    text-decoration: none !important;
+}

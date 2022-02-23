@@ -1,0 +1,17 @@
+<nav role="navigation" aria-label="Primary navigation" class="flex items-center justify-between flex-wrap mt-8">
+  <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto">
+    <div class="text-xl lg:flex-grow lg:mr-5 border-b-4 border-gray-800 mb-5 lg:mb-0">
+      {%- for pagelinks in collections.navitem reversed -%}
+      <a href="{{ pagelinks.url | url }}" {% if pagelinks.url == page.url or pagelinks.url contains '/blog' %} aria-current="page" class="block rounded mb-4 p-2 lg:inline-block lg:mt-0 text-teal-lighter hover:bg-pink-700 hover:text-white mr-4 navitem focus:outline-none focus:ring focus:ring-gray-900 dark:focus:outline-none dark:focus:ring dark:focus:ring-white hover:no-underline dark:bg-pink-700 dark:text-white bg-black text-white "{% endif %}
+        class="block rounded underline mb-4 p-2 lg:inline-block lg:mt-0 text-teal-lighter hover:bg-pink-700 hover:text-white mr-4 navitem focus:outline-none focus:ring focus:ring-gray-900 dark:focus:outline-none dark:focus:ring dark:focus:ring-white hover:no-underline  ">{{
+        pagelinks.data.navtitle }}
+      </a>
+
+      {%- endfor -%}
+    </div>
+    <button
+      class="sm:mt-5 md:mt-5 bg-gray-800 focus:outline-none hover:bg-gray-700 border-gray-700 hover:border-gray-500 text-white dark:bg-green-300 hover:bg-green-200 border-b-4 border-green-600 hover:border-green-400 dark:text-black text-center py-2 px-4 rounded"
+      id="toggleDarkMode"></button>
+  </div>
+
+</nav>

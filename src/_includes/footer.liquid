@@ -1,0 +1,19 @@
+<footer role="contentinfo" class="mt-8 bg-gray-200 dark:bg-gray-900 py-8 flex-shrink-0 border-t-4 border-gray-800  rounded-xl p-10 shadow-2xl shadow-inner">
+  <div class="justify-between flex-1 w-10/12 max-w-screen-sm md:max-w-screen-md mx-auto lg:flex flex-row mx-auto">
+    <ul class="flex list-none flex-row" role="list">
+      {% if site.accessibility.linktext %}
+      <li role="listitem" class="mr-8"><a class="text-xl" href={{ site.accessibility.URL }}>{{
+          site.accessibility.linktext }}</a>
+      </li>
+      {% endif %}
+      <li role="listitem" class="mr-8">
+        <a class="text-xl" href="/Privacy">Privacy</a>
+      </li>
+      <li role="listitem">
+        <a class="text-xl" href="/sitemap">Sitemap</a>
+      </li>
+    </ul>
+    <p class="text-xl">Copyright Sconner.net 2022</p>
+
+  </div>
+</footer>

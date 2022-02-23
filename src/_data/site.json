@@ -1,0 +1,14 @@
+{
+    "name": "Sconner.net",
+    "authorName": "Shaun Conner",
+    "url": "http://sconner.net",
+    "description": "Welcome to my blog",
+    "github": "",
+    "twitter": "http://twitter.com/connerDJ",
+    "copyright": "Copyright Sconner.net 2021",
+    "linkedin": "https://www.linkedin.com/in/shaun-conner-724a9822/",
+    "accessibility": {
+    "linktext": "Accessibility statement",
+    "URL": "http://sconner.net/accessibility-statement"
+    }
+}
