@@ -18,7 +18,12 @@ pagination:
   <h2 class="mb-3 text-xl sm:text-4xl font-bold">
   {{ post.data.title }}
   </h2>
-  <img src="{{ post.data.thumb }}" alt="Some alt text">
+  {% if post.data.thumb %}
+<div class="mt-10 -mx-7 md:mx-0">
+
+  <img src="/assets/img/{{ post.data.thumb }}" alt="Some alt text">
+</div>
+{% endif %}
   <p class="dark:text-gray-400">Published: {{ post.date | date: "%d-%m-%Y" }}</p>
   <p class="pb-4 dark:text-gray-400">Read time: {{ post.templateContent | readTime }} minutes</p>
   <p class="mt-4 text-xl">{{ post.data.post_excerpt }}...</p>

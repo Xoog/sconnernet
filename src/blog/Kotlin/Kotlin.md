@@ -2,6 +2,7 @@
 title: Accessibility is political
 date: 2020-07-01
 # published: false
+thumb: bgshaun.jpg
 tags:
 - kotlin
 - android
