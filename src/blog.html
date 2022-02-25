@@ -12,30 +12,28 @@ pagination:
   alias: blog
 ---
 <div class="mt-10">
-{% for post in pagination.items %}
-{% if post.data.published %}
-<article class="py-4">
-  <h2 class="mb-3 text-xl sm:text-4xl font-bold">
-  {{ post.data.title }}
-  </h2>
-  {% if post.data.thumb %}
-<div class="mt-10 -mx-7 md:mx-0">
+  {% for post in pagination.items %}
+  {% if post.data.published %}
+  <article class="py-4">
+    <h2 class="mb-3 text-2xl sm:text-4xl font-bold">
+      {{ post.data.title }}
+    </h2>
+    {% if post.data.thumb %}
+    <img src="/assets/img/{{ post.data.thumb }}" alt="Some alt text">
+    {% endif %}
 
-  <img src="/assets/img/{{ post.data.thumb }}" alt="Some alt text">
-</div>
-{% endif %}
-  <p class="dark:text-gray-400">Published: {{ post.date | date: "%d-%m-%Y" }}</p>
-  <p class="pb-4 dark:text-gray-400">Read time: {{ post.templateContent | readTime }} minutes</p>
-  <p class="mt-4 text-xl">{{ post.data.post_excerpt }}...</p>
-  
-  <div class="mt-4 py-5 border-b-2 border-gray-800 ">
-    <a class="py-2 font-semibold text-2xl mb-10" href="{{ post.url }}">Read the full article</a>
-  </div>
+    <p class="dark:text-gray-400">Published: {{ post.date | date: "%d-%m-%Y" }}</p>
+    <p class="pb-4 dark:text-gray-400">Read time: {{ post.templateContent | readTime }} minutes</p>
+    <p class="mt-4 text-l md:text-xl">{{ post.data.post_excerpt }}...</p>
 
-</article>
+    <div class="mt-4 py-5 border-b-2 border-gray-800 ">
+      <a class="py-2 text-xl sm:text-2xl font-bold mb-10" href="{{ post.url }}">Read the full article</a>
+    </div>
 
-{% endif %}
-{% endfor %}
+  </article>
+
+  {% endif %}
+  {% endfor %}
 </div>
 
 {% include 'paginator' %}

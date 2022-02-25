@@ -17,7 +17,6 @@ module.exports = {
               "&:hover": {
                 color: "#FFFFFF",
                 backgroundColor: theme("colors.gray.700"),
-                borderRadius: "5px",
               },
               "&:active": {
                 color: "#FFFFFF",

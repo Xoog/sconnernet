@@ -24,3 +24,16 @@
 .noUnderline {
     text-decoration: none !important;
 }
+.skip-link {
+    left: -9999px;
+    padding: 8px;
+    position: absolute;
+}
+.skip-link:focus {
+    left: 16px;
+    top: 16px;
+    z-index: 2;
+}
+:focus-within {
+    outline: none;
+}

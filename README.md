@@ -1,20 +1,9 @@
-# Blog starter
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a9b962b7-9df1-49db-9b40-e5fedbc8ba9e/deploy-status)](https://app.netlify.com/sites/eleventy-blog-starter/deploys)
-
-View the live demo [here](https://eleventy.rongying.co/), hosted on Netlify
-
-![homepage](blog-v2.png)
-![darkmode](blog-dark.png)
-
-## Aims
-A blog that still runs without javascript. Hence, no bundlers. 
-
+# Blog
 
 ## Features
 - Static Site Gen - Eleventy
 
-- Tailwind CSS v2.0 / Tailwind Typography / Dark Mode
+- Tailwind CSS v3.0 / Tailwind Typography / Dark Mode
 
 - Create excerpts using the `<!-- excerpt -->`
 
@@ -40,16 +29,10 @@ A blog that still runs without javascript. Hence, no bundlers.
   - change the `size` frontmatter variable
 - ESLint
 
-+ Bash script to create new post (based on YYYY and MM)
-```bash
-$ ./create new blog post
-Created new post at src/posts/2021/01/new-blog-post.md
-```
-
 
 ## Running locally
 
-Create your blogpost under `src/posts`. I like to have mine sorted by YY/MM.
+Create your blogpost under `src/posts`.
 
 Navigate to localhost:8080 after starting the server.
 ```
