@@ -27,33 +27,20 @@
     }
   </script>
 
-
-  <script>
-    // Grab HTML Elements
-    const btn = document.getElementById("menubtn");
-    const menu = document.querySelector(".mobile-menu");
-
-    // Add Event Listeners
-    btn.addEventListener("click", () => {
-      menu.classList.toggle("hidden");
-      // toggle icons inside button
-      burgeropen.classList.toggle('hidden');
-      burgerclosed.classList.toggle('hidden');
-    });
-  </script>
-
 </head>
 
 
 <body class="dark:text-white dark:bg-gray-900">
-  
+  <script>
+    document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+  </script>
   <header role="banner">
     <a class="skip-link" href="#maincontent">Skip to main content</a>
     <div class="flex flex-col dark:prose-dark">
       <div class="flex-1 w-10/12 max-w-screen-sm md:max-w-screen-lg mx-auto">
-  
+
         {% include 'nav' %}
-  
+
       </div>
     </div>
   </header>
@@ -61,19 +48,24 @@
   {{ content }}
 
   <script>
+
+    var themeToggleBtn = document.getElementById('theme-toggle');
+    var themeoutput = document.getElementById('themeoutput')
     var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
     var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    var themeText = document.getElementById('themeText')
 
     // Change the icons inside the button based on previous settings
     if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       themeToggleLightIcon.classList.remove('hidden');
+      themeoutput.innerHTML = 'Dark theme is currently active'
+      themeText.innerHTML = 'Activate light theme'
     } else {
       themeToggleDarkIcon.classList.remove('hidden');
+      themeoutput.innerHTML = 'Light theme is currently active'
+      themeText.innerHTML = 'Activate dark theme'
     }
 
-    var themeToggleBtn = document.getElementById('theme-toggle');
-
-    var themeToggleBtnMob = document.getElementById('theme-toggle-mob');
 
     themeToggleBtn.addEventListener('click', function () {
 
@@ -85,10 +77,14 @@
       if (localStorage.getItem('color-theme')) {
         if (localStorage.getItem('color-theme') === 'light') {
           document.documentElement.classList.add('dark');
+          themeoutput.innerHTML = 'Dark theme is currently active'
+          themeText.innerHTML = 'Activate light theme'
           localStorage.setItem('color-theme', 'dark');
         } else {
           document.documentElement.classList.remove('dark');
           localStorage.setItem('color-theme', 'light');
+          themeText.innerHTML = 'Activate dark theme'
+          themeoutput.innerHTML = 'Light theme is currently active'
         }
 
         // if NOT set via local storage previously
@@ -96,9 +92,13 @@
         if (document.documentElement.classList.contains('dark')) {
           document.documentElement.classList.remove('dark');
           localStorage.setItem('color-theme', 'light');
+          themeoutput.innerHTML = 'Light theme is currently active'
+          themeText.innerHTML = 'Activate light theme'
         } else {
           document.documentElement.classList.add('dark');
           localStorage.setItem('color-theme', 'dark');
+          themeoutput.innerHTML = 'Dark theme is currently active'
+          themeText.innerHTML = 'Activate dark theme'
         }
       }
 
@@ -106,6 +106,7 @@
     );
   </script>
   <script>
+    var themeoutput = document.getElementById('themeoutput')
     var themeToggleDarkIconMob = document.getElementById('theme-toggle-dark-icon-mob');
     var themeToggleLightIconMob = document.getElementById('theme-toggle-light-icon-mob');
 
@@ -129,9 +130,11 @@
       if (localStorage.getItem('color-theme')) {
         if (localStorage.getItem('color-theme') === 'light') {
           document.documentElement.classList.add('dark');
+          themeoutput.innerHTML = 'Dark theme is currently active'
           localStorage.setItem('color-theme', 'dark');
         } else {
           document.documentElement.classList.remove('dark');
+          themeoutput.innerHTML = 'Light theme is currently active'
           localStorage.setItem('color-theme', 'light');
         }
 
@@ -140,14 +143,42 @@
         if (document.documentElement.classList.contains('dark')) {
           document.documentElement.classList.remove('dark');
           localStorage.setItem('color-theme', 'light');
+          themeoutput.innerHTML = 'Light theme is currently active'
         } else {
           document.documentElement.classList.add('dark');
+          themeoutput.innerHTML = 'Dark theme is currently active'
           localStorage.setItem('color-theme', 'dark');
         }
       }
 
     }
     );
+  </script>
+  <script>
+    // Grab HTML Elements
+    const btn = document.getElementById("menubtn");
+    const menu = document.querySelector(".mobile-menu");
+
+    // Add Event Listeners
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+      // toggle icons inside button
+      burgeropen.classList.toggle('hidden');
+      burgerclosed.classList.toggle('hidden');
+    });
+  </script>
+
+  <script>
+    var menuToggle = document.querySelector("#menubtn");
+    var accessibleMenu = document.querySelector(".mobile-menu");
+
+    menuToggle.addEventListener("click", function (event) {
+      var menuOpen = accessibleMenu.classList.contains("active");
+      var newMenuOpenStatus = !menuOpen;
+
+      menuToggle.setAttribute("aria-expanded", newMenuOpenStatus);
+      accessibleMenu.classList.toggle("active");
+    });
   </script>
 </body>
 

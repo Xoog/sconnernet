@@ -37,3 +37,30 @@
 :focus-within {
     outline: none;
 }
+.menu-checkbox,
+.menu {
+    display: none;
+}
+
+.menu-toggle {
+    font-size: 36px;
+}
+
+.menu a {
+    display: block;
+}
+
+.menu-checkbox:checked + .menu {
+    display: block;
+}
+button#theme-toggle { display: none; }
+
+.js-enabled button#theme-toggle { display: block; }
+
+button#menubtn { display: none; }
+
+.js-enabled button#menubtn { display: block; }
+
+#nojs-mobile-menu { display: block; }
+
+.js-enabled #nojs-mobile-menu { display: none; }

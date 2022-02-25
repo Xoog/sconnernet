@@ -5,12 +5,11 @@
       <div class="flex flex-row">
         <ul class="flex basis-1/2">
           {%- for pagelinks in collections.navitem reversed -%}
-          <li><a href="{{ pagelinks.url | url }}" {% if pagelinks.url == page.url%} aria-current="page"
+          <li><a href="{{ pagelinks.url | url }}" {% if pagelinks.url==page.url%} aria-current="page"
               class="block rounded mb-4 p-2.5 lg:inline-block lg:mt-0 text-teal-lighter hover:bg-pink-700 hover:text-white mr-4 navitem focus:outline-none dark:focus:outline-none  hover:no-underline dark:bg-pink-700 dark:text-white bg-black text-white noUnderline"
               {% else %}
               class="block rounded  mb-2 p-2.5 lg:inline-block lg:mt-0 text-teal-lighter hover:bg-pink-700 hover:text-white mr-4 navitem focus:outline-none  dark:focus:outline-none hover:no-underline "
-              {% endif %}
-              >{{
+              {% endif %}>{{
               pagelinks.data.navtitle }}
             </a>
           </li>
@@ -21,8 +20,8 @@
       id="toggleDarkMode"></button> -->
         <div class="flex basis-1/2 justify-end">
           <button id="theme-toggle" type="button" role="button"
-            class="text-black hover:text-white dark:text-gray-400 hover:bg-pink-700 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-black dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mb-4 dark:hover:text-white"
-            aria-label="Switch color scheme">
+            class="js-enabled text-black hover:text-white dark:text-gray-400 hover:bg-pink-700 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-black dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mb-4 dark:hover:text-white">
+            <span id="themeText" class="sr-only"></span>
             <svg id="theme-toggle-dark-icon" class="hidden w-8 h-8" fill="currentColor" viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg">
               <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -34,62 +33,80 @@
                 fill-rule="evenodd" clip-rule="evenodd"></path>
             </svg>
           </button>
+
         </div>
       </div>
     </div>
   </div>
 </nav>
 
-<div class="relative flex items-center justify-between h-16 sm:block md:block lg:hidden xlg:hidden 2xl:hidden">
-  <div class="sm:flex md:flex lg:hidden xlg:hidden 2xl:hidden flex basis-full">
-    <!-- Mobile menu button-->
-    <button type="button" id="menubtn"
-      class="inline-flex mt-8 items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-      aria-controls="mobile-menu" aria-expanded="false">
-      <span class="sr-only">Open main menu</span>
 
-      <svg id="burgerclosed" class="block h-110 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-        stroke="currentColor" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+  <div class="md:flex lg:hidden xlg:hidden 2xl:hidden">
+    <button id="theme-toggle-mob" type="button" role="button"
+      class="text-black hover:text-white dark:text-gray-400 hover:bg-pink-700 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-black dark:focus:ring-gray-700 rounded-lg text-sm px-2.5 mt-1 dark:hover:text-white mt-6"
+      aria-label="Switch color scheme">
+      <svg id="theme-toggle-dark-icon-mob" class="hidden w-10 h-10" fill="currentColor" viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
       </svg>
+      <svg id="theme-toggle-light-icon-mob" class="hidden w-10 h-10" fill="currentColor" viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+          fill-rule="evenodd" clip-rule="evenodd"></path>
+      </svg>
+    </button>
+     <!-- Mobile menu button-->
+     <span id="menu-label" hidden>Main menu</span>
+     <button type="button" id="menubtn" aria-labelledby="menu-label"
+       class="text-black hover:text-white dark:text-gray-400 hover:bg-pink-700 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-black dark:focus:ring-gray-700 rounded-lg text-sm px-2.5 mt-1 dark:hover:text-white mt-6 float-right"
+       aria-expanded="false">
+       <span class="sr-only">Open main menu</span>
+ 
+       <svg id="burgerclosed" class="block h-110 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+         stroke="currentColor" aria-hidden="true">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg>
+ 
+       <svg id="burgeropen" class="hidden h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+         stroke="currentColor" aria-hidden="true">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+       </svg>
+     </button>
+     <nav id="mobile-menu" aria-labelledby="menu-label" class="hidden mobile-menu mt-3">
+       <ul class="w-full">
+         {%- for pagelinks in collections.navitem reversed -%}
+         <li><a href="{{ pagelinks.url | url }}" {% if pagelinks.url==page.url %} aria-current="page"
+             class="block rounded mb-4 p-2.5 lg:inline-block lg:mt-0 text-teal-lighter hover:bg-pink-700 hover:text-white navitem focus:outline-none dark:focus:outline-none  hover:no-underline dark:bg-pink-700 dark:text-white bg-black text-white noUnderline"
+             {% else %}
+             class="block rounded  mb-2 p-2.5 lg:inline-block lg:mt-0 text-teal-lighter hover:bg-pink-700 hover:text-white navitem focus:outline-none  dark:focus:outline-none hover:no-underline "
+             {% endif %}>{{
+             pagelinks.data.navtitle }}
+           </a>
+         </li>
+         {%- endfor -%}
+     
+       </ul>
+     </nav>
 
-      <svg id="burgeropen" class="hidden h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-        stroke="currentColor" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button> 
-    <div class="flex basis-full justify-end mt-7">
-      <button id="theme-toggle-mob" type="button" role="button"
-        class="text-black hover:text-white dark:text-gray-400 hover:bg-pink-700 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-black dark:focus:ring-gray-700 rounded-lg text-sm px-2.5 dark:hover:text-white"
-        aria-label="Switch color scheme">
-        <svg id="theme-toggle-dark-icon-mob" class="hidden w-8 h-8" fill="currentColor" viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-        </svg>
-        <svg id="theme-toggle-light-icon-mob" class="hidden w-8 h-8" fill="currentColor" viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-            fill-rule="evenodd" clip-rule="evenodd"></path>
-        </svg>
-      </button>
-    </div>
+     <nav id="nojs-mobile-menu" aria-labelledby="menu-label" class="mobile-menu">
+      <ul class="w-full">
+        {%- for pagelinks in collections.navitem reversed -%}
+        <li><a href="{{ pagelinks.url | url }}" {% if pagelinks.url==page.url %} aria-current="page"
+            class="block rounded mb-4 p-2.5 lg:inline-block lg:mt-0 text-teal-lighter hover:bg-pink-700 hover:text-white navitem focus:outline-none dark:focus:outline-none  hover:no-underline dark:bg-pink-700 dark:text-white bg-black text-white noUnderline"
+            {% else %}
+            class="block rounded  mb-2 p-2.5 lg:inline-block lg:mt-0 text-teal-lighter hover:bg-pink-700 hover:text-white navitem focus:outline-none  dark:focus:outline-none hover:no-underline "
+            {% endif %}>{{
+            pagelinks.data.navtitle }}
+          </a>
+        </li>
+        {%- endfor -%}
+    
+      </ul>
+    </nav>
+
   </div>
-</div>
-<!-- Mobile menu -->
-<div class="hidden mobile-menu mt-10" id="mobile-menu">
-  <ul class="w-1/2">
-    {%- for pagelinks in collections.navitem reversed -%}
-    <li><a href="{{ pagelinks.url | url }}" {% if pagelinks.url==page.url %} aria-current="page"
-        class="block rounded mb-4 p-2.5 lg:inline-block lg:mt-0 text-teal-lighter hover:bg-pink-700 hover:text-white mr-4 navitem focus:outline-none dark:focus:outline-none  hover:no-underline dark:bg-pink-700 dark:text-white bg-black text-white noUnderline"
-        {% else %}
-        class="block rounded  mb-2 p-2.5 lg:inline-block lg:mt-0 text-teal-lighter hover:bg-pink-700 hover:text-white mr-4 navitem focus:outline-none  dark:focus:outline-none hover:no-underline "
-        {% endif %}
-        >{{
-        pagelinks.data.navtitle }}
-      </a>
-    </li>
-    {%- endfor -%}
 
-  </ul>
-</div>
+
+
+
