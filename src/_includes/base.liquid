@@ -27,19 +27,36 @@
     }
   </script>
 
+
+  <script>
+    // Grab HTML Elements
+    const btn = document.getElementById("menubtn");
+    const menu = document.querySelector(".mobile-menu");
+
+    // Add Event Listeners
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+      // toggle icons inside button
+      burgeropen.classList.toggle('hidden');
+      burgerclosed.classList.toggle('hidden');
+    });
+  </script>
+
 </head>
-<header role="banner">
-  <a class="skip-link" href="#maincontent">Skip to main content</a>
-  <div class="flex flex-col dark:prose-dark">
-    <div class="flex-1 w-10/12 max-w-screen-sm md:max-w-screen-lg mx-auto">
 
-      {% include 'nav' %}
-
-    </div>
-  </div>
-</header>
 
 <body class="dark:text-white dark:bg-gray-900">
+  
+  <header role="banner">
+    <a class="skip-link" href="#maincontent">Skip to main content</a>
+    <div class="flex flex-col dark:prose-dark">
+      <div class="flex-1 w-10/12 max-w-screen-sm md:max-w-screen-lg mx-auto">
+  
+        {% include 'nav' %}
+  
+      </div>
+    </div>
+  </header>
 
   {{ content }}
 
