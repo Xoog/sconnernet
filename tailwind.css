@@ -1,3 +1,5 @@
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -50,7 +52,7 @@
     display: block;
 }
 
-.menu-checkbox:checked + .menu {
+/* .menu-checkbox:checked + .menu {
     display: block;
 }
 button#theme-toggle { display: none; }
@@ -59,12 +61,14 @@ button#theme-toggle { display: none; }
 
 button#theme-toggle-mob { display: none; }
 
-.js-enabled button#theme-toggle-mob { display: initial; }
-
+.js-enabled button#theme-toggle-mob { display: initial; } */
+/* 
 button#menubtn { display: none; }
 
-.js-enabled button#menubtn { display: initial }
+.js-enabled button#menubtn { display: initial } */
 
-#nojs-mobile-menu { display: block; }
+div > [hidden] { 
+    display: initial;
+  }
 
-.js-enabled #nojs-mobile-menu { display: none; }
+
