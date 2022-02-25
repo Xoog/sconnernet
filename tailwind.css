@@ -59,11 +59,11 @@ button#theme-toggle { display: none; }
 
 button#theme-toggle-mob { display: none; }
 
-.js-enabled button#theme-toggle-mob { display: block; }
+.js-enabled button#theme-toggle-mob { display: initial; }
 
 button#menubtn { display: none; }
 
-.js-enabled button#menubtn { display: block; }
+.js-enabled button#menubtn { display: initial }
 
 #nojs-mobile-menu { display: block; }
 

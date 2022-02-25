@@ -89,7 +89,7 @@
        </ul>
      </nav>
 
-     <nav id="nojs-mobile-menu" aria-labelledby="menu-label" class="mobile-menu">
+     <nav id="nojs-mobile-menu" aria-labelledby="menu-label" class="mobile-menu mt-5">
       <ul class="w-full">
         {%- for pagelinks in collections.navitem reversed -%}
         <li><a href="{{ pagelinks.url | url }}" {% if pagelinks.url==page.url %} aria-current="page"
