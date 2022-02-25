@@ -57,6 +57,10 @@ button#theme-toggle { display: none; }
 
 .js-enabled button#theme-toggle { display: block; }
 
+button#theme-toggle-mob { display: none; }
+
+.js-enabled button#theme-toggle-mob { display: block; }
+
 button#menubtn { display: none; }
 
 .js-enabled button#menubtn { display: block; }
