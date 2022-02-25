@@ -78,7 +78,7 @@
   </div>
 </div>
 <!-- Mobile menu -->
-<div class="hidden mobile-menu mt-10">
+<div class="hidden mobile-menu mt-10" id="mobile-menu">
   <ul class="w-1/2">
     {%- for pagelinks in collections.navitem reversed -%}
     <li><a href="{{ pagelinks.url | url }}" {% if pagelinks.url==page.url %} aria-current="page"
